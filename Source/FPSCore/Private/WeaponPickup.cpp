@@ -123,7 +123,19 @@ void AWeaponPickup::SpawnAttachmentMesh()
 						}
 						else if (AttachmentData->AttachmentType == EAttachmentType::Sights)
 						{
-							SightsAttachment->SetStaticMesh(AttachmentData->PickupMesh);
+							if(AttachmentData->bNeedsRailAttachment)
+							{
+								RailAttachment->SetStaticMesh(AttachmentData->PickupMesh);
+								RailAttachment->AttachToComponent(MeshComp, FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("Rail_Socket"));
+								SightsAttachment->SetStaticMesh(AttachmentData->PickupMesh);
+								SightsAttachment->DetachFromComponent(FDetachmentTransformRules::KeepRelativeTransform);
+								SightsAttachment->AttachToComponent(RailAttachment, FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("Sight_Socket"));
+							}
+							else
+							{
+								SightsAttachment->SetStaticMesh(AttachmentData->PickupMesh);
+							}
+							
 						}
 						else if (AttachmentData->AttachmentType == EAttachmentType::Stock)
 						{
