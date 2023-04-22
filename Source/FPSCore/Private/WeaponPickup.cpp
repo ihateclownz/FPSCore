@@ -4,7 +4,9 @@
 
 #include "FPSCharacter.h"
 #include "WeaponBase.h"
+#include "Components/InventoryComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Programs/UnrealHeaderTool/Resources/UHTDebugging/TestDeprecatedObject.h"
 
 // Sets default values
 AWeaponPickup::AWeaponPickup()
@@ -16,14 +18,34 @@ AWeaponPickup::AWeaponPickup()
 	MagazineAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MagazineAttachment"));
 	MagazineAttachment->SetupAttachment(MeshComp);
 	
-	SightsAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SightsAttachment"));
-	SightsAttachment->SetupAttachment(MeshComp);
 
 	StockAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StockAttachment"));
 	StockAttachment->SetupAttachment(MeshComp);
 	
 	GripAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GripAttachment"));
-	GripAttachment->SetupAttachment(MeshComp);
+	GripAttachment->SetupAttachment(BarrelAttachment, TEXT("Grip_Socket"));
+
+	MuzzleAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MuzzleAttachment"));
+	MuzzleAttachment->SetupAttachment(BarrelAttachment,TEXT("Muzzle_Socket"));
+
+	HandleAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HandleAttachment"));
+	HandleAttachment->SetupAttachment(MeshComp);
+
+	BodyAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyAttachment"));
+	BodyAttachment->SetupAttachment(MeshComp);
+
+	RailAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RailAttachment"));
+	RailAttachment->SetupAttachment(MeshComp);
+
+	SightsAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SightsAttachment"));
+	SightsAttachment->SetupAttachment(MeshComp);
+
+	AmmoModAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("AmmoModAttachment"));
+	AmmoModAttachment->SetupAttachment(MeshComp);
+
+	CharmAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CharmAttachment"));
+	CharmAttachment->SetupAttachment(MeshComp);
+	
 }
 
 // Called when the game starts or when spawned

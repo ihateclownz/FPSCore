@@ -106,4 +106,22 @@ private:
 
 	UPROPERTY()
 	UStaticMeshComponent* GripAttachment;
+
+	UPROPERTY()
+	UStaticMeshComponent* MuzzleAttachment;
+
+	UPROPERTY()
+	UStaticMeshComponent* HandleAttachment;
+
+	UPROPERTY()
+	UStaticMeshComponent* BodyAttachment;
+
+	UPROPERTY()
+	UStaticMeshComponent* RailAttachment;
+
+	UPROPERTY()
+	UStaticMeshComponent* AmmoModAttachment;
+
+	UPROPERTY()
+	UStaticMeshComponent* CharmAttachment;
 };
