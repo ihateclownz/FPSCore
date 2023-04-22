@@ -12,6 +12,7 @@
 #include "FPSCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "Components/InventoryComponent.h"
+#include "Programs/UnrealHeaderTool/Resources/UHTDebugging/TestDeprecatedObject.h"
 
 // Sets default values
 AWeaponBase::AWeaponBase()
@@ -42,9 +43,33 @@ AWeaponBase::AWeaponBase()
     StockAttachment->CastShadow = false;
     StockAttachment->SetupAttachment(RootComponent);
 
+    MuzzleAttachment = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("MuzzleAttachemtn"));
+    MuzzleAttachment->CastShadow = false;
+    MuzzleAttachment->SetupAttachment(BarrelAttachment, TEXT("Barrel_Socket"));
+
     GripAttachment = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("GripAttachment"));
     GripAttachment->CastShadow = false;
-    GripAttachment->SetupAttachment(RootComponent);
+    GripAttachment->SetupAttachment(BarrelAttachment,TEXT("Grip_Socket"));
+    
+    HandleAttachment = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("HandleAttachment"));
+    HandleAttachment->CastShadow = false;
+    HandleAttachment->SetupAttachment(RootComponent);
+
+    BodyAttachment = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("BodyAttachment"));
+    BodyAttachment->CastShadow = false;
+    BodyAttachment->SetupAttachment(RootComponent);
+
+    RailAttachment = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("RailAttachemnt"));
+    RailAttachment->CastShadow = false;
+    RailAttachment->SetupAttachment(RootComponent);
+
+    AmmoModAttachment = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("AmmoModAttachment"));
+    AmmoModAttachment->CastShadow = false;
+    AmmoModAttachment->SetupAttachment(RootComponent);
+
+    CharmAttachment = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharmAttachment"));
+    CharmAttachment->CastShadow = false;
+    CharmAttachment->SetupAttachment(RootComponent);
 }
 
 

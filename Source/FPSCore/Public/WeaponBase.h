@@ -41,8 +41,14 @@ enum class EAttachmentType : uint8
 	Barrel		UMETA(DisplayName = "Barrel Attachment"),
 	Magazine	UMETA(DisplayName = "Magazine Attachment"),
 	Sights		UMETA(DisplayName = "Sights Attachment"),
-	Stock		UMETA(DispayName = "Stock Attachment"),
-	Grip		UMETA(DispayName = "Grip Attachment"),
+	Stock		UMETA(DisplayName = "Stock Attachment"),
+	Grip		UMETA(DisplayName = "Grip Attachment"),
+	Muzzle		UMETA(DisplayName = "Muzzle Attachment"),
+	Handle		UMETA(DisplayName = "Handle Attachment"),
+	Body		UMETA(DisplayName = "Body Attachment"),
+	Rail		UMETA(DisplayName = "Rail Attachment"),
+	AmmoMod		UMETA(DisplayName = "AmmoMod Attachment"),
+	Charm		UMETA(DisplayName = "Charm Attachment"),
 };
 
 /** A struct containing all the animations needed by FPS Core, in order to simplify blueprint operations */
@@ -732,6 +738,30 @@ protected:
 	/** The skeletal mesh used to hold the current grip attachment */
 	UPROPERTY(BlueprintReadOnly, Category = "Components")
 	USkeletalMeshComponent* GripAttachment;
+
+	/** The skeletal mesh used to hold the current muzzle attachment */
+	UPROPERTY(BlueprintReadOnly, Category = "Components")
+	USkeletalMeshComponent* MuzzleAttachment;
+
+	/** The skeletal mesh used to hold the current handle attachment */
+	UPROPERTY(BlueprintReadOnly, Category = "Components")
+	USkeletalMeshComponent* HandleAttachment;
+
+	/** The skeletal mesh used to hold the current grip attachment */
+	UPROPERTY(BlueprintReadOnly, Category = "Components")
+	USkeletalMeshComponent* BodyAttachment;
+
+	/** The skeletal mesh used to hold the current rail attachment */
+	UPROPERTY(BlueprintReadOnly, Category = "Components")
+	USkeletalMeshComponent* RailAttachment;
+
+	/** The skeletal mesh used to hold the current ammo mod attachment */
+	UPROPERTY(BlueprintReadOnly, Category = "Components")
+	USkeletalMeshComponent* AmmoModAttachment;
+
+	/** The skeletal mesh used to hold the current charm attachment */
+	UPROPERTY(BlueprintReadOnly, Category = "Components")
+	USkeletalMeshComponent* CharmAttachment;
 	
 private:
 
