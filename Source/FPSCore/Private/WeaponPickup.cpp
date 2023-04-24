@@ -6,7 +6,6 @@
 #include "WeaponBase.h"
 #include "Components/InventoryComponent.h"
 #include "Kismet/GameplayStatics.h"
-#include "Programs/UnrealHeaderTool/Resources/UHTDebugging/TestDeprecatedObject.h"
 
 // Sets default values
 AWeaponPickup::AWeaponPickup()
@@ -123,19 +122,7 @@ void AWeaponPickup::SpawnAttachmentMesh()
 						}
 						else if (AttachmentData->AttachmentType == EAttachmentType::Sights)
 						{
-							if(AttachmentData->bNeedsRailAttachment)
-							{
-								RailAttachment->SetStaticMesh(AttachmentData->PickupMesh);
-								RailAttachment->AttachToComponent(MeshComp, FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("Rail_Socket"));
-								SightsAttachment->SetStaticMesh(AttachmentData->PickupMesh);
-								SightsAttachment->DetachFromComponent(FDetachmentTransformRules::KeepRelativeTransform);
-								SightsAttachment->AttachToComponent(RailAttachment, FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("Sight_Socket"));
-							}
-							else
-							{
-								SightsAttachment->SetStaticMesh(AttachmentData->PickupMesh);
-							}
-							
+							SightsAttachment->SetStaticMesh(AttachmentData->PickupMesh);
 						}
 						else if (AttachmentData->AttachmentType == EAttachmentType::Stock)
 						{
@@ -145,6 +132,29 @@ void AWeaponPickup::SpawnAttachmentMesh()
 						{
 							GripAttachment->SetStaticMesh(AttachmentData->PickupMesh);
 						}
+						else if (AttachmentData->AttachmentType == EAttachmentType::Muzzle)
+						{
+							MuzzleAttachment->SetStaticMesh(AttachmentData->PickupMesh);
+						}
+						else if (AttachmentData->AttachmentType == EAttachmentType::Handle)
+						{
+							HandleAttachment->SetStaticMesh(AttachmentData->PickupMesh);
+						}
+						else if (AttachmentData->AttachmentType == EAttachmentType::Body)
+						{
+							BodyAttachment->SetStaticMesh(AttachmentData->PickupMesh);
+						}
+						else if (AttachmentData->AttachmentType == EAttachmentType::Rail)
+						{
+							RailAttachment->SetStaticMesh(AttachmentData->PickupMesh);
+						}
+						else if (AttachmentData->AttachmentType == EAttachmentType::AmmoMod)
+						{
+							AmmoModAttachment->SetStaticMesh(AttachmentData->PickupMesh);
+						}
+						else if (AttachmentData->AttachmentType == EAttachmentType::Charm)
+						{
+							CharmAttachment->SetStaticMesh(AttachmentData->PickupMesh);						}
 					}
 				}
 			}

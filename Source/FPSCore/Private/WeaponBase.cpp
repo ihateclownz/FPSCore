@@ -12,7 +12,6 @@
 #include "FPSCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "Components/InventoryComponent.h"
-#include "Programs/UnrealHeaderTool/Resources/UHTDebugging/TestDeprecatedObject.h"
 
 // Sets default values
 AWeaponBase::AWeaponBase()
@@ -33,7 +32,7 @@ AWeaponBase::AWeaponBase()
 
     MagazineAttachment = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("MagazineAttachment"));
     MagazineAttachment->CastShadow = false;
-    MagazineAttachment->SetupAttachment(RootComponent);
+    MagazineAttachment->SetupAttachment(RootComponent, TEXT("Magazine_Socket"));
 
     SightsAttachment = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SightsAttachment"));
     SightsAttachment->CastShadow = false;
@@ -242,6 +241,30 @@ void AWeaponBase::SpawnAttachments()
                     {
                         Anim_Fall = AttachmentData->Anim_Fall;
                     }
+                }
+                else if (AttachmentData->AttachmentType == EAttachmentType::Muzzle)
+                {
+                    MuzzleAttachment->SetSkeletalMesh(AttachmentData->AttachmentMesh);
+                }
+                else if (AttachmentData->AttachmentType == EAttachmentType::Handle)
+                {
+                    HandleAttachment->SetSkeletalMesh(AttachmentData->AttachmentMesh);
+                }
+                else if (AttachmentData->AttachmentType == EAttachmentType::Body)
+                {
+                    BodyAttachment->SetSkeletalMesh(AttachmentData->AttachmentMesh);
+                }
+                else if (AttachmentData->AttachmentType == EAttachmentType::Rail)
+                {
+                    RailAttachment->SetSkeletalMesh(AttachmentData->AttachmentMesh);
+                }
+                else if (AttachmentData->AttachmentType == EAttachmentType::AmmoMod)
+                {
+                    AmmoModAttachment->SetSkeletalMesh(AttachmentData->AttachmentMesh);
+                }
+                else if (AttachmentData->AttachmentType == EAttachmentType::Charm)
+                {
+                    CharmAttachment->SetSkeletalMesh(AttachmentData->AttachmentMesh);
                 }
             }
         }
