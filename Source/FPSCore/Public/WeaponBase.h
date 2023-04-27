@@ -51,6 +51,15 @@ enum class EAttachmentType : uint8
 	Charm		UMETA(DisplayName = "Charm Attachment"),
 };
 
+UENUM()
+enum class EPackedLevel
+{
+	None,
+	One,
+	Two,
+	Three,
+};
+
 /** A struct containing all the animations needed by FPS Core, in order to simplify blueprint operations */
 USTRUCT(BlueprintType)
 struct FHandsAnimSet
@@ -122,6 +131,9 @@ struct FRuntimeWeaponData
 	/** The attachments used in the current weapon */
 	UPROPERTY(BlueprintReadOnly, Category = "Weapon Data")
 	TArray<FName> WeaponAttachments;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Weapon Data")
+	EPackedLevel LevelPAP;
 };
 
 /** Struct holding all data required by an attachment */
@@ -141,6 +153,10 @@ struct FAttachmentData : public FTableRowBase
 	/** The type of attachment */
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "General")
 	EAttachmentType AttachmentType;
+
+	/** The UI Icon for the attachment */
+	UPROPERTY(EditDefaultsOnly, Category = "General")
+	UTexture2D* AttachmentIcon;
 
 	/** Attachments that are incompatible with the given attachment */
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "General")
@@ -336,6 +352,11 @@ struct FAttachmentData : public FTableRowBase
 	/** The linear FOV at a magnification of 1x */
 	UPROPERTY(EditDefaultsOnly, Category = "Sights", meta=(EditCondition="AttachmentType == EAttachmentType::Sights"))
 	float UnmagnifiedLFoV = 200.0f;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Muzzle", meta=(EditCondition="AttachmentType == EAttachmentType::Muzzle"))
+	float MaxRange = 200.0f;
+
+	
 };
 
 /** Struct holding all required information about the weapon class. This data is set once at tbe beginning of this
@@ -616,6 +637,10 @@ struct FStaticWeaponData : public FTableRowBase
 	/** The name of this weapon, to be used for UI */
 	UPROPERTY(EditDefaultsOnly, Category = "Viewport")
 	FName WeaponName;
+
+	/** The name of this weapon, to be used for UI */
+	UPROPERTY(EditDefaultsOnly, Category = "Viewport")
+	FName WeaponPackedName;
 
 	/** A display image associated with this weapon which can be used for UI */
 	UPROPERTY(EditDefaultsOnly, Category = "Viewport")

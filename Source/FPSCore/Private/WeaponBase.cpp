@@ -160,7 +160,6 @@ void AWeaponBase::SpawnAttachments()
 
                 if (AttachmentData->AttachmentType == EAttachmentType::Barrel)
                 {
-
                     BarrelAttachment->SetSkeletalMesh(AttachmentData->AttachmentMesh);
                     WeaponData.MuzzleLocation = AttachmentData->MuzzleLocationOverride;
                     WeaponData.ParticleSpawnLocation = AttachmentData->ParticleSpawnLocationOverride;
@@ -245,6 +244,7 @@ void AWeaponBase::SpawnAttachments()
                 else if (AttachmentData->AttachmentType == EAttachmentType::Muzzle)
                 {
                     MuzzleAttachment->SetSkeletalMesh(AttachmentData->AttachmentMesh);
+                    WeaponData.LengthMultiplier += AttachmentData->MaxRange;
                 }
                 else if (AttachmentData->AttachmentType == EAttachmentType::Handle)
                 {

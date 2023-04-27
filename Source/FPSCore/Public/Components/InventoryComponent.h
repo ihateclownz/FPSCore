@@ -83,6 +83,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Inventory Component")
 	int GetNumberOfWeaponSlots() const { return NumberOfWeaponSlots; }
 
+	UFUNCTION(BlueprintCallable, Category = "Inventory Component")
+	void SetNumberOfWeaponSlots	(int WeaponSlots){NumberOfWeaponSlots = WeaponSlots;}
+
 	/** Returns the currently equipped weapon slot */
 	UFUNCTION(BlueprintCallable, Category = "Inventory Component")
 	int GetCurrentWeaponSlot() const { return CurrentWeaponSlot; }
@@ -209,7 +212,7 @@ private:
 	float WeaponSpawnDistance = 100.0f;
 
 	/** THe Number of slots for Weapons that this player has */
-	UPROPERTY(EditDefaultsOnly, Category = "Weapons | Inventory")
+	UPROPERTY(EditAnywhere , Category = "Weapons | Inventory")
 	int NumberOfWeaponSlots = 2;
 
 	/** An array of starter weapons. Only weapons within the range of NumberOfWeaponSlots will be spawned */

@@ -539,6 +539,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Input | Actions")
 	UInputAction* PauseAction;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Input | Actions")
+	UInputAction* FieldUpgradeAction;
+
 	/** Input Mappings */
 
 	UPROPERTY(EditDefaultsOnly, Category = "Input | Mappings")

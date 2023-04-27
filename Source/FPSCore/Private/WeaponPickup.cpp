@@ -15,9 +15,8 @@ AWeaponPickup::AWeaponPickup()
 	BarrelAttachment->SetupAttachment(MeshComp);
 
 	MagazineAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MagazineAttachment"));
-	MagazineAttachment->SetupAttachment(MeshComp);
+	MagazineAttachment->SetupAttachment(MeshComp, TEXT("Magazine_Socket"));
 	
-
 	StockAttachment = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StockAttachment"));
 	StockAttachment->SetupAttachment(MeshComp);
 	
